@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PaymentDAO">
+
+	
+	<!-- oracle 인 경우 -->	
+	<insert id="insertPayment" parameterType="PaymentVO">
+	INSERT INTO ORDERDATA(order_number,payment_number,id,
+   				 sender_name,sender_email,sender_tel,sender_zonecode,
+   				 sender_address,sender_daddress,receiver_name,receiver_email,
+    			 receiver_tel,receiver_zonecode, receiver_address,receiver_daddress,
+    			 user_require, buylist_number, price, state)
+		VALUES(1, 1, 'abc123', #{sender_name}, #{sender_email},
+				#{sender_tel}, #{sender_zonecode}, #{sender_address}, #{sender_daddress},
+				#{receiver_name}, #{receiver_email}, #{receiver_tel}, #{receiver_zonecode},
+				#{receiver_address}, #{receiver_daddress}, #{user_require}, 1,
+				1, 'null')
+	</insert> 
+	
+</mapper>

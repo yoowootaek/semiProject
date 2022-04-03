@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace='accountMapper'>
+	
+	<!-- 회원정보 입력 -->
+	<insert id='insertAccount' parameterType="AccountVO">
+		INSERT INTO account(
+		account_Id, account_Password, account_Name, account_Email, account_Tel, account_Addr1, account_Addr2, account_Addr3)
+		VALUES(#{account_Id}, #{account_Password}, #{account_Name}, #{account_Email}, #{account_Tel}, #{account_Addr1}, #{account_Addr2}, #{account_Addr3})
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="login" resultType="AccountVO">
+		SELECT account_Id, account_Password
+		FROM account
+		WHERE account_Id=#{account_Id} AND account_Password=#{account_Password}
+	</select>
+</mapper>
