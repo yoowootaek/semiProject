@@ -19,13 +19,15 @@
 <a href='/homePage/productInsertBoard.do'>글등록</a><br/><br/>
 <a href='/homePage/productUpdateBoard.do'>글업데이트</a><br/><br/>
 <a href='/homePage/store.do'>상품페이지</a><br/><br/>
-
+<hr/>
+<hr/>
 <a href='/admin/adminHome.do'>관리자페이지</a><br/><br/><br/>
-
-
+<hr/>
+<hr/>
 <a href='/signupLogin/login.do'>로그인</a><br/><br/>
 <a href='/signupLogin/signup.do'>회원가입</a><br/><br/><br/>
-
+<hr/>
+<hr/>
 
 <a href='/myPage/myPageHome.do'>마이페이지</a><br/><br/>
 <a href='/myPage/myPageUpdate.do'>회원정보수정</a><br/><br/>
@@ -37,7 +39,6 @@
 <a href='/myPage/canclepage.do'>취소/교환/반품 페이지</a><br/><br/>
 <a href='/myPage/ordermodify.do'>주문수정 페이지</a><br/><br/><br/>
 
-<hr/>
 <hr/>
 <hr/><br/>
 
