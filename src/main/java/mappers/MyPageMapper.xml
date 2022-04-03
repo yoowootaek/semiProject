@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="orderMapper">
+
+	<!-- **************상품정보 입력 *************************************************************
+	<insert id='insertMember' parameterType="OrderModifyVO" >
+		INSERT INTO order_product(ORDER_SEQ, ORDER_TIME, ORDER_PAYSELECT,ORDER_UESRREQ, ACCOUNT_ID , PRODUCT_SEQ,COUPON_NUMBER )
+		VALUES(order_seq.nextval, sysdate, #{order_payselect},#{order_uesrreq},#{account_id},product_seq.nextval,#{coupon_number})
+	</insert>
+	-->
+	
+	<!--************** 주문내역정보 불려오기 ******************************************************-->
+	<select id="getOrderList" resultType="MyPageOrderModifyVO" >
+	SELECT *
+	FROM order_product 
+	ORDER BY order_seq DESC
+    </select>
+	
+	<!-- ****************주문내역 값들 주문상세보기 불려오기 ***********-->
+	<select id="getOrderLoadList" resultType="MyPageOrderModifyVO" >
+	SELECT *
+	FROM order_product 
+	ORDER BY order_seq DESC
+
+	</select>
+	
+	<!-- ********주문수정버튼 업데이트  ******************************************-->
+	<update id="updateMember" parameterType="MyPageOrderModifyVO">
+	UPDATE order_product SET
+	account_id = #{account_id},
+	order_payselect = #{order_payselect},
+	order_uesrreq = #{order_uesrreq},
+	coupon_number = #{coupon_number}
+	WHERE account_id = #{account_id}
+	
+	
+	</update>
+	
+	
+	<!-- 주문수정  -->
+	<select id="selectModify" resultType="MyPageOrderModifyVO" >
+	SELECT *
+	FROM order_product 
+	WHERE account_id=#{account_id}
+
+	</select>
+	
+	</mapper>

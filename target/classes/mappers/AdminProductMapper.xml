@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ProductDAO">
+	<!-- 상품목록  -->
+	<select id="adminGetProductList" resultType="AdminProductVO">
+		<![CDATA[
+		SELECT * FROM product_Info ORDER BY product_Seq DESC
+		]]>
+	</select>
+	
+	<!-- 상품 입력 -->
+	<insert id="adminInsertProduct" parameterType="AdminProductVO">
+		INSERT INTO
+		product_Info (product_Seq , product_Name,
+		<if test="product_MainImg != null ">
+			product_MainImg, product_realMainImg,
+		</if>
+		<if test="product_BrandImg != null ">
+			product_BrandImg, product_realBrandImg,
+		</if>
+		<if test="product_SubImg != null ">
+			product_SubImg, product_realSubImg,
+		</if>
+		product_Category, product_Vol,product_ModelName, product_ShortContent,product_Price, product_Content2, product_Date
+		)
+		VALUES (product_Seq.nextval, #{product_Name },
+		<if test="product_MainImg != null ">
+			#{product_MainImg}, #{product_realMainImg},
+		</if>
+		<if test="product_BrandImg != null ">
+			#{product_BrandImg}, #{product_realBrandImg},
+		</if>
+		<if test="product_SubImg != null ">
+			#{product_SubImg}, #{product_realSubImg},
+		</if>
+		#{product_Category}, #{product_Vol}, #{product_ModelName}, #{product_ShortContent},#{product_Price}, #{product_Content2}, sysdate
+		)
+	</insert>
+	<!-- 게시글 수정 -->
+	<update id="adminUpdateProduct" parameterType="AdminProductVO">
+		UPDATE product_Info SET
+		product_Name = #{product_Name},
+		<if test="product_MainImg != null ">
+			product_MainImg = #{product_MainImg}, product_realMainImg = #{product_realMainImg},
+		</if>
+		<if test="product_BrandImg != null ">
+			product_BrandImg = #{product_BrandImg}, product_realBrandImg = #{product_realBrandImg},
+		</if>
+		<if test="product_SubImg != null ">
+			product_SubImg = #{product_SubImg}, product_realSubImg = #{product_realSubImg},
+		</if>
+		product_Category = #{product_Category},
+		product_Vol = #{product_Vol},
+		product_ModelName = #{product_ModelName},
+		product_ShortContent = #{product_ShortContent},
+		product_Price = #{product_Price},
+		product_Content2 = #{product_Content2},
+		product_Date = sysdate
+		WHERE product_Seq = #{product_Seq}
+	</update>
+	
+	<!-- 상품 상세보기 -->
+	<select id="adminGetProduct" parameterType="AdminProductVO"
+		resultType="AdminProductVO">
+		
+		SELECT *
+		FROM product_Info
+		WHERE product_Seq = #{product_Seq}
+		
+	</select>
+	<!-- 상품 삭제 -->
+	<delete id="adminDeleteProduct" parameterType="AdminProductVO">
+		
+		DELETE FROM product_Info
+		WHERE product_Seq = #{product_Seq}
+		
+	</delete>
+	<!-- ************************************************************************** -->
+</mapper>

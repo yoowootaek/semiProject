@@ -1,0 +1,1 @@
+sts.ini javavar -> 1.8

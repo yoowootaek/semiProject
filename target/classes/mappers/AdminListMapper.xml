@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="MainDAO">
+	<select id="adminGetCustomerList" resultType="AdminListVO">
+		<![CDATA[
+		SELECT * FROM account ORDER BY account_Data DESC
+		]]>
+	</select>
+	<!-- ************************************************************************** -->
+	<select id="adminGetOrderList" resultType="AdminListVO">
+		<![CDATA[
+		SELECT * FROM order_product ORDER BY order_Seq DESC
+		]]>
+	</select>
+	<!-- ************************************************************************** -->
+	<select id="adminGetPayList" resultType="AdminListVO">
+		<![CDATA[
+		SELECT * FROM payment ORDER BY pay_Seq DESC
+		]]>
+	</select>
+	<!-- ************************************************************************** -->
+</mapper>

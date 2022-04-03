@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardDAO">
+	<!-- ************************************************************************** -->
+	<!-- 게시글 입력 -->
+	<insert id="adminInsertBoard" parameterType="AdminBoardVO">
+		INSERT INTO
+		admin_Board (board_Seq , board_Title, board_Password, board_Category,
+		board_Content,
+		<if test="board_MainImg != null ">
+			board_MainImg, board_RealMainImg,
+		</if>
+		board_Content2, board_Date
+		)
+		VALUES (board_Seq.nextval, #{board_Title }, #{board_Password },
+		#{board_Category }, #{board_Content },
+		<if test="board_MainImg != null ">
+			#{board_MainImg}, #{board_RealMainImg},
+		</if>
+		#{board_Content2}, sysdate
+		)
+	</insert>
+	
+	<!-- 게시글 수정 -->
+	<update id="adminUpdateBoard" parameterType="AdminBoardVO">
+		UPDATE admin_Board SET
+		board_Title = #{board_Title},
+		board_Category =
+		#{board_Category},
+		board_Content = #{board_Content},
+		board_Content2 =
+		#{board_Content2},
+		<if test="board_MainImg != null ">
+			board_MainImg = #{board_MainImg}, board_RealMainImg = #{board_RealMainImg},
+		</if>
+		board_Date = sysdate
+		WHERE board_Seq = #{board_Seq} AND board_Password
+		= #{board_Password}
+	</update>
+
+	<!-- 게시글 목록 -->
+	<select id="adminGetBoardList" resultType="AdminBoardVO">
+		
+		SELECT * FROM admin_Board ORDER BY board_Seq DESC
+		
+	</select>
+
+	<!-- 게시판 상세보기 -->
+	<select id="adminGetBoard" parameterType="AdminBoardVO"
+		resultType="AdminBoardVO">
+		
+		SELECT *
+		FROM admin_Board
+		WHERE board_Seq = #{board_Seq}
+		
+	</select>
+	<!-- 게시글 삭제 -->
+	<delete id="adminDeleteBoard" parameterType="AdminBoardVO">
+	
+		DELETE FROM admin_Board
+		WHERE board_Seq = #{board_Seq} AND board_Password = #{board_Password}
+	
+	</delete>
+	
+	<!-- 비밀번호 확인-->
+    <select id="checkBoard" resultType="int">
+        SELECT 
+            COUNT(*) 
+        FROM admin_Board
+        WHERE board_Seq = #{board_Seq} AND board_Password = #{board_Password}
+    </select>
+	
+	
+	<!-- ************************************************************************** -->
+</mapper>

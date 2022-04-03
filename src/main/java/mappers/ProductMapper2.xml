@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ProductBoardDAO">
+
+	<insert id="productInsertBoard" parameterType="ProductBoardVO">
+		<!-- INSERT INTO 
+				admin_Board (board_Seq , board_Title, account_id, board_Password, board_Category, board_Content,board_Date)
+	    VALUES (board_Seq.nextval, #{board_Title }, #{account_id} ,#{board_Password }, #{board_Category }, #{board_Content },sysdate)     -->     
+	    
+	    INSERT INTO
+		admin_Board (board_Seq , board_Title, board_Password, board_Category,
+		board_Content,
+		<if test="board_MainImg != null ">
+			board_MainImg, board_RealMainImg,
+		</if>
+		board_Content2, board_Date, account_Id
+		)
+		VALUES (board_Seq.nextval, #{board_Title }, #{board_Password },
+		#{board_Category }, #{board_Content },
+		<if test="board_MainImg != null ">
+			#{board_MainImg}, #{board_RealMainImg},
+		</if>
+		#{board_Content2}, sysdate, #{account_Id}
+		)          
+	</insert>
+	
+	<select id="productgetBoardList" resultType="ProductBoardVO">
+		
+		<!--  SELECT 
+			board_seq           	as board_Seq 
+			, board_title         	as board_Title 
+			, board_password 	   	as board_Password 	
+			, board_category      	as board_Category 
+			, board_content 	   	as board_Content 	
+			, board_mainimg       	as board_MainImg 
+			, board_realmainimg   	as board_realMainImg
+			, board_content2      	as board_Content2 
+			, board_date          	as board_Date 
+			, account_id          	as account_id
+		FROM ADMIN_BOARD  --> 
+		
+		 SELECT * FROM admin_Board  
+		ORDER BY board_Seq DESC
+		
+	</select>
+	
+	<!-- 검색 -->
+	<!-- <select id="productgetBoardList" parameterType="ProductBoardVO" resultType="ProductBoardVO">
+		SELECT *
+		FROM (SELECT result1.*, ROWNUM AS rnum FROM (SELECT * FROM admin_Board		
+		<choose>
+			<when test="board_Title != null">
+				WHERE title LIKE '%'||#{board_Title}||'%'
+			</when>	
+			#은 set하는거고	
+			<when test="board_Title != null">
+				WHERE board_Title LIKE '%${board_Title}%'  
+			$는 미리만들ㄹ어놓고 실행한다 이엘아님..마이바티스문임!
+			</when>
+			<when test="board_Title !=null">
+				WHERE account_id LIKE '%${account_id}%'
+			</when>
+		</choose>
+	</select> -->
+	
+	
+	<select id="productgetBoard" parameterType="ProductBoardVO" resultType="ProductBoardVO">
+		<![CDATA[
+		SELECT 
+			board_seq           	as board_Seq 
+			, board_title         	as board_Title 
+			, board_password 	   	as board_Password 	
+			, board_category      	as board_Category 
+			, board_content 	   	as board_Content 	
+			, board_mainimg       	as board_MainImg 
+			, board_realmainimg   	as board_realMainImg
+			, board_content2      	as board_Content2 
+			, board_date          	as board_Date 
+			, account_id          	as account_id
+		FROM ADMIN_BOARD
+		WHERE board_Seq = #{board_Seq}
+		]]>
+	</select>
+	
+	<!-- 수정 -->
+	<update id="productUpdateBoard" parameterType="ProductBoardVO">
+		UPDATE admin_Board SET
+		board_Title = #{board_Title},
+		board_Category =
+		#{board_Category},
+		board_Content = #{board_Content},
+		board_Content2 =
+		#{board_Content2},
+		<if test="board_MainImg != null ">
+			board_MainImg = #{board_MainImg}, board_RealMainImg = #{board_RealMainImg},
+		</if>
+		board_Date = sysdate
+		WHERE board_Seq = #{board_Seq} AND board_Password
+		= #{board_Password}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="productDeleteBoard" parameterType="ProductBoardVO">
+	
+		DELETE FROM admin_Board
+		WHERE board_Seq = #{board_Seq} AND board_Password = #{board_Password}
+	
+	</delete>
+
+</mapper>

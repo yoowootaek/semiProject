@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace='chartMapper'>
+	
+	<!-- 게시판 카테고리별 차트  -->
+	<select id="countBoard" resultType="ChartVO">
+		SELECT *
+		FROM admin_Board
+		WHERE board_Category = #{board_Category}
+	</select>
+	
+</mapper>
