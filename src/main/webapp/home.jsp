@@ -47,7 +47,7 @@
 <a href='/paymentOrder/payment_sucess.do'>결제성공</a><br/><br/>
 <a href='/paymentOrder/payment_fail.do'>결제실패</a><br/><br/>
 <a href='/paymentOrder/refund.do'>환불하기</a><br/><br/>
-
+test
 
 </body>
 </html>
