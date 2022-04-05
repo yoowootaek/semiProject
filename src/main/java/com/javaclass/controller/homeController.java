@@ -50,9 +50,9 @@ public class homeController {
 	//}
 
 	// 7.취소/교환/반품 페이지
-	@RequestMapping("myPage/canclepage.do")
-	public void canclepage() {
-	}
+	//@RequestMapping("myPage/canclepage.do")
+	//public void canclepage() {
+	//}
 	// 8.주문수정 페이지
 	//@RequestMapping("myPage//ordermodify.do")
 	//public void ordermodify() {
