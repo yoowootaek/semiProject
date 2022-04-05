@@ -91,10 +91,15 @@ public class MyPageOrderModifyController {
 		 inputStatus= req.getParameter("inputStatus");
 		System.out.println(inputStatus);
 		m.addAttribute("inputStatus",ordermodifyServiceImpl.getSelect());
-		return "/canclepage.do";
+		return "/cancleload.do";
 	}
 	
 
-	
+	//cancleload 페이지에 취소/교환/반품 상태 표시해주기 **************************************************
+	@RequestMapping("updateCancle.do") 
+	public String updateCancle(MyPageOrderModifyVO vo) {
+     ordermodifyServiceImpl.updateCancle(vo); 
+		return "/cancleload.do"; 
+	}
 	
 }

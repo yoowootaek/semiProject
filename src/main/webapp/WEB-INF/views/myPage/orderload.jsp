@@ -88,7 +88,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <tr class="expandable-body">
         <td colspan="5">
         <p style="">
-        <img src="../resources/img/logo.png"/>
+        <img src="../resources/dist/img/logo.png"/>
         dfsdds
         <!-- <img src="../resources/imgs/a3.jpg"> 상대경로 이미지 파일 -->
         </p>

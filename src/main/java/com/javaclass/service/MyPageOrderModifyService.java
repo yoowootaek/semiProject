@@ -26,4 +26,7 @@ public interface MyPageOrderModifyService {
 	
 	//cancle 페이지에서 option 값 가져오기
 	public MyPageOrderModifyVO getSelect();
+	
+	//cancleload 페이지에 취소/교환/반품 상태 표시
+	void updateCancle(MyPageOrderModifyVO vo);
 }

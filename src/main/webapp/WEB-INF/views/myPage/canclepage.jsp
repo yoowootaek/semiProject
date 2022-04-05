@@ -102,7 +102,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                  </select>
                 
                 <input id="changetext"  class="form-control" placeholder="변경 사유를 입력하세요." required> 
-                <a href="orderpage.do"><input type="submit" id="change" class="btn btn-info" value="확인"></a></td>
+                <a href="cancleload.do"><input type="submit" id="change" class="btn btn-info" value="확인"></a></td>
 												</tr>
 											
 

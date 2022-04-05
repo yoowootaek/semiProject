@@ -58,6 +58,12 @@ public class homeController {
 	//public void ordermodify() {
 	//}
 	
+	//9.취소/교환/반품 상태표시 페이지
+	@RequestMapping("myPage/cancleload.do")
+	public void cancleload() {
+		
+	}
+	
 	//---------------------------------------------------------
 	// 홈 페이지 접속
 	@RequestMapping("homePage/blank.do")

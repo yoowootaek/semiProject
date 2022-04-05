@@ -55,5 +55,9 @@ public class MyPageOrderModifyDAOImpl implements MyPageOrderModifyDAO {
 		return sqlSession.selectOne("orderMapper.getSelect");
 	}
 	
+	//cancleload 페이지에 취소/교환/반품 상태 표시
+	public void updateCancle(MyPageOrderModifyVO vo) {
+		sqlSession.update("orderMapper.updateCancle",vo);
+	}
 
 }

@@ -2,24 +2,21 @@
 <%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>마이페이지-주문페이지</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<title>마이페이지-취소/교환/반품 페이지</title>
 
 <%@ include file="../include/myPageInclude/myPageCSS.jsp"%>
 
-
 </head>
 <body class="hold-transition sidebar-mini">
-	<div class="wrapper">
+<div class="wrapper">
 
 		<!-- Navbar -->
 		<%@ include file="../include/myPageInclude/myPageNavbar.jsp"%>
@@ -30,12 +27,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<!-- Sidebar end -->
 
 		<div class="content-wrapper">
+			
+			<form action="load.do"></form>
+			<input type="hidden" name="account_id" value="${board.account_id }">
 			<!-- Content Header (Page header) -->
 			<div class="content-header">
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0">주문내역 페이지</h1>
+							<h1 class="m-0">취소/교환/반품 페이지</h1>
 						</div>
 						<!-- /.col -->
 						<!-- /.col -->
@@ -54,9 +54,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 							<!-- /.card -->
 							<div class="card">
 								<div class="card-header">
-									<h3 class="card-title">주문내역</h3>
+									<h3 class="card-title">취소/교환/반품</h3>
 								</div>
 								<!-- /.card-header -->
+								<form class="form-horizontal" action="cancle.do" method='get'>
 								<div class="card-body">
 									<table id="example1" class="table table-bordered table-striped">
 										<thead>
@@ -64,32 +65,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 												<th>주문번호</th>
 												<th>상품명</th>
 												<th>금액</th>
-												<th>주소</th>
-												<th>수정/취소</th>
+												<th>수량</th>
+												<th>상태</th>
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach items="${orderList}" var="board">
+											
 												<tr>
 													<td>${board.account_id}</td>
-													<td><a href="orderload.do">${board.order_payselect}</a></td>
+													<td>${board.order_payselect}</td>
 													<td>${board.order_uesrreq}</td>
 													<td>${board.coupon_number}</td>
-													<td align="left"><a
-														href="ordermodify.do?account_id=${board.account_id }"><input
-															type="submit" value="수정"
-															class="btn btn-block bg-gradient-primary btn-sm"></a>
-														<a href="canclepage.do?account_id=${board.account_id}"><input
-															value="취소/교환/반품" type="submit"
-															class="btn btn-block bg-gradient-danger btn-sm"></a>
-													</td>
+						
 												</tr>
-											</c:forEach>
-
-
+										
 										</tbody>
 									</table>
 								</div>
+								</form>
 								<!-- /.card-body -->
 							</div>
 							<!-- /.card -->
@@ -103,17 +96,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			<!-- /.content -->
 		</div>
 		<!-- main end -->
-
+</form>
 		<!-- Main Footer -->
 		<%@ include file="../include/myPageInclude/myPageFooter.jsp"%>
 	</div>
 	<!-- ./wrapper -->
-
 	<!-- REQUIRED SCRIPTS -->
 	<%@ include
 		file="../include/myPageInclude/myPageScript/myPageScript.jsp"%>
-	<%@ include file="../include/myPageInclude/myPageScript/myPageList.jsp"%>
-	
-
-</body>
-</html>
+	<%@ include file="../include/myPageInclude/myPageScript/myPageList.jsp" %>
