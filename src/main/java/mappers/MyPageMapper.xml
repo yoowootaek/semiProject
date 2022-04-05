@@ -18,7 +18,7 @@
 	ORDER BY order_seq DESC
     </select>
 	
-	<!-- ****************주문내역 값들 주문상세보기 불려오기 ***********-->
+	<!-- ****************주문내역 값들 주문상세보기 불려오기 *************************************-->
 	<select id="getOrderLoadList" resultType="MyPageOrderModifyVO" >
 	SELECT *
 	FROM order_product 
@@ -29,22 +29,38 @@
 	<!-- ********주문수정버튼 업데이트  ******************************************-->
 	<update id="updateMember" parameterType="MyPageOrderModifyVO">
 	UPDATE order_product SET
-	account_id = #{account_id},
 	order_payselect = #{order_payselect},
 	order_uesrreq = #{order_uesrreq},
 	coupon_number = #{coupon_number}
 	WHERE account_id = #{account_id}
-	
-	
 	</update>
 	
 	
-	<!-- 주문수정  -->
+	<!-- 주문 상세보기  ************************************************************************-->
 	<select id="selectModify" resultType="MyPageOrderModifyVO" >
 	SELECT *
 	FROM order_product 
 	WHERE account_id=#{account_id}
 
 	</select>
+	
+	
+	<!-- 주문 취소/반품/교환 페이지 *********************************************************** -->
+	<select id="selectDelete"  parameterType="string" resultType="MyPageOrderModifyVO">
+	SELECT*
+	FROM order_product
+	WHERE account_id = #{account_id}
+	
+	</select>
+	
+	
+	<!-- 취소/교환/반품페이지 ********************************************************************* 
+	<update id="inputStatus" parameterType="hashmap">
+	UPDATE order_product  
+	SET 
+	WHERE order_seq =#{order_seq}
+	 </update>-->
+	
+	
 	
 	</mapper>

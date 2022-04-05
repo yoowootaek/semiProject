@@ -20,4 +20,10 @@ public interface MyPageOrderModifyService {
 	
 	//주문수정페이지 db 불려오기
 	public MyPageOrderModifyVO selectModify(MyPageOrderModifyVO vo);
+	
+	//취소/교환/반품 페이지 
+	public MyPageOrderModifyVO selectDelete(String vo);
+	
+	//cancle 페이지에서 option 값 가져오기
+	public MyPageOrderModifyVO getSelect();
 }
