@@ -20,5 +20,9 @@ public interface MyPageOrderModifyDAO {
     //주문상세 내역 불려오기 
     public MyPageOrderModifyVO selectModify(MyPageOrderModifyVO vo);
     
-	
+    //주문취소/반품/교환 페이지
+    public MyPageOrderModifyVO selectDelete(String vo);
+    
+  //cancle 페이지에서 option 값 가져오기
+    public MyPageOrderModifyVO getSelect();
 }

@@ -16,6 +16,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <%@ include file="../include/myPageInclude/myPageCSS.jsp"%>
 
+
 </head>
 <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
@@ -64,6 +65,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 												<th>상품명</th>
 												<th>금액</th>
 												<th>주소</th>
+												<th>상태</th>
 												<th>수정/취소</th>
 											</tr>
 										</thead>
@@ -71,15 +73,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											<c:forEach items="${orderList}" var="board">
 												<tr>
 													<td>${board.account_id}</td>
-													<td>${board.order_payselect}</td>
+													<td><a href="orderload.do">${board.order_payselect}</a></td>
 													<td>${board.order_uesrreq}</td>
 													<td>${board.coupon_number}</td>
+													<td></td>
 													<td align="left"><a
 														href="ordermodify.do?account_id=${board.account_id }"><input
 															type="submit" value="수정"
 															class="btn btn-block bg-gradient-primary btn-sm"></a>
-														<button type="button"
-															class="btn btn-block bg-gradient-danger btn-sm">취소</button>
+														<a href="canclepage.do?account_id=${board.account_id}"><input
+															value="취소/교환/반품" type="submit"
+															class="btn btn-block bg-gradient-danger btn-sm"></a>
 													</td>
 												</tr>
 											</c:forEach>
@@ -110,7 +114,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	<!-- REQUIRED SCRIPTS -->
 	<%@ include
 		file="../include/myPageInclude/myPageScript/myPageScript.jsp"%>
-	<%@ include file="../include/myPageInclude/myPageScript/myPageList.jsp" %> 
+	<%@ include file="../include/myPageInclude/myPageScript/myPageList.jsp"%>
+	
 
 </body>
 </html>

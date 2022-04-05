@@ -44,6 +44,16 @@ public class MyPageOrderModifyDAOImpl implements MyPageOrderModifyDAO {
 		
 	}
 	
-
+	//주문 취소/교환/반품 페이지
+	public MyPageOrderModifyVO selectDelete(String vo) {
+		return sqlSession.selectOne("orderMapper.selectDelete",vo);
+		
+	}
 	
+	//cancle 페이지에서 option 값 가져오기
+	public MyPageOrderModifyVO getSelect() {
+		return sqlSession.selectOne("orderMapper.getSelect");
+	}
+	
+
 }
